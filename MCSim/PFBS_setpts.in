@@ -1,0 +1,31 @@
+Integrate (Lsodes, 1e-6, 1e-6, 1);
+
+SetPoints ("","PFBS_setpts.out",0,p_1, p_2, p_3, p_4, GSD_error_C1_blood, GSD_error_C1_cell, GSD_error_C1_lumen, GSD_error_C2_blood, GSD_error_C2_cell, GSD_error_C2_lumen);
+
+Simulation { 
+  area = 0.143;                # cm^2
+  V_blood = 0.000235;          #  L
+  V_cell = 2.529479e-08;       # (0.00065)^3*3.14*(4/3)*50000/1000
+  V_lumen = 0.000075;          #  L
+A1_lumen_init = Events (A1_lumen, 1, 0, Add, 0.000375);
+ A2_blood_init = Events (A2_blood, 1, 0, Add, 0.001175);
+PrintStep(  
+    # 1: Lumen (A) to Blood (B) study
+    C1_blood,      # Quantity in blood compartment (micromoles)
+    C1_cell,       # Quantity in cell lysate compartment (micromoles)
+    C1_lumen,      # Quantity in lumen compartment (micromoles)
+    
+    # 2: Blood (B) to Lumen (A) study
+    C2_blood,      # Quantity in blood compartment (micromoles)
+    C2_cell,       # Quantity in cell lysate compartment (micromoles)
+    C2_lumen,      # Quantity in lumen compartment (micromoles)
+    
+    # 3: Both add study
+    #A3_blood,      # Quantity in blood compartment (micromoles)
+    #A3_cell,       # Quantity in cell lysate compartment (micromoles)
+    #A3_lumen,       # Quantity in lumen compartment (micromoles)
+    0, 24, 1);
+
+}
+
+End.
