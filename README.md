@@ -1,4 +1,4 @@
-# CLrenal_pred_23chem
+# CLrenal_pred_22chem
 
 This repository is constructed for the paper "An in vitro-in silico workflow for predicting renal clearance of environmental and pharmaceuticals compounds (TBD)" and contains scripts and data for executing modeling and analysis.
 
